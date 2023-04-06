@@ -24,15 +24,16 @@ class Teamhw01
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int user[] = new int[3];
-        int strike = 0, ball = 0;
+        int strike ,ball;
         String num;
-
-        for (; ; ) {
+        int gameCnt = 0;
+        System.out.println("컴퓨터가 숫자를 생성하였습니다. 답을 맞춰보세요!");
+        a : while (true) {
             strike = 0;
             ball = 0;
-            int gameCnt = 0;
-            System.out.println("컴퓨터가 숫자를 생성하였습니다. 답을 맞춰보세요!");
-            while (true) {
+
+
+
                 System.out.print((gameCnt + 1) + "번째 시도 : ");
                 num = br.readLine();
                 gameCnt++;
@@ -41,11 +42,13 @@ class Teamhw01
                 user[2] = Integer.parseInt(num) % 10;
                 if (num.length() != 3) {
                     System.out.println("0~9 사이의 숫자 3자리를 입력해 주세요.");
+                    continue a;
                 } else if (num.charAt(0) == '0') {
                     System.out.println("첫번째 자리에는 0이 올 수 없습니다. 다시 입력해 주세요.");
+                    continue a;
                 } else if (user[0] == user[1] || user[1] == user[2] || user[0] == user[2]) {
                     System.out.println("중복된 숫자가 존재합니다. 다시 입력해 주세요.");
-                    break;
+                    continue a;
                 }
                 for (int i = 0; i < 3; i++) {
                     if (com[i] == user[i])
@@ -70,6 +73,7 @@ class Teamhw01
 
 
             }
+
         }
+
     }
-}
